@@ -60,8 +60,9 @@ export class CalculatorComponent implements OnInit {
   }
 
   calculate(calculation: Calculation): any{
-    this.calculateService.calculate(calculation);
-    this.calculateService.request().subscribe((x: any) => this.calculations = x);
+    this.calculateService.calculate(calculation).subscribe(() =>
+      this.calculateService.request().subscribe((x: any) => this.calculations = x));
+    this.ngOnInit();
   }
 
 
