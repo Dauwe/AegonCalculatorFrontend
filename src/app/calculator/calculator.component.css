@@ -1,0 +1,7 @@
+.screen {
+  width: 200px;
+  height: 20px;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+}

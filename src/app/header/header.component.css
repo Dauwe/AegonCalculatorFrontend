@@ -1,0 +1,30 @@
+.header {
+  background-color: #3895D3;
+  padding: 25px;
+  margin-left:-10px;
+  margin-top:-10px;
+  width: 100%;
+}
+
+.header__icon {
+  height: 40px;
+  width: 40px;
+  margin-left: 20px;
+}
+
+.header__icon:hover {
+  cursor: pointer;
+}
+
+.header__icon--link {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  top: -10px;
+  background-color: #D6982A;
+}
+
+.header__icon--link:hover {
+  cursor: pointer;
+  background-color: #F3AB31;
+}

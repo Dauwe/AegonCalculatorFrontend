@@ -1,1 +1,8 @@
-<p>header works!</p>
+<header class="header">
+  <div>
+    <a *ngFor="let menuItem of links" class="header__icon--underline" (click)="routeTo(menuItem.redirectUrl)">
+      <img class="header__icon" alt="{{menuItem.naam}}" title="{{menuItem.naam}}" src="{{menuItem.icon}}">
+      <span class="header__icon--link">{{menuItem.naam}}</span>
+    </a>
+  </div>
+</header>
