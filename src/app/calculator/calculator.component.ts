@@ -10,11 +10,11 @@ import {CalculateService} from '../calculate.service';
 export class CalculatorComponent implements OnInit {
 
   constructor(private calculateService: CalculateService) { }
-  numberOne: number | undefined;
-  numberTwo: number | undefined;
+  numberOne = '';
+  numberTwo = '';
   method: string | undefined;
 
-  numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   methods = ['+', '-', '*', '/'];
   calculation: Calculation = {};
   calculations: [Calculation] | undefined;
@@ -22,22 +22,19 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  numberClicked(num: number): any {
-    if (this.numberOne === undefined){
-      this.numberOne = num;
-      this.calculation.numberOne = num;
+  numberClicked(num: string): any {
+    if (this.method === undefined){
+      this.numberOne = this.numberOne.concat(num);
       return;
     }
-    if (this.numberTwo === undefined){
-      this.numberTwo = num;
-      this.calculation.numberTwo = num;
-      return;
-    }
+    this.numberTwo = this.numberTwo.concat(num);
+    return;
   }
 
   methodClicked(met: string): any {
     if (this.method === undefined){
       this.method = met;
+      this.calculation.numberOne = Number(this.numberOne);
       switch (met) {
         case '+': {
           this.calculation.method = 'ADD';
@@ -60,14 +57,15 @@ export class CalculatorComponent implements OnInit {
   }
 
   calculate(calculation: Calculation): any{
+    this.calculation.numberTwo = Number(this.numberTwo);
     this.calculateService.calculate(calculation).subscribe(() =>
-      this.calculateService.request().subscribe((x: any) => this.calculations = x), () => window.alert('ERROR. Probeer het opnieuw.'));
+      this.calculateService.request().subscribe((x: any) => this.calculations = x), () => window.alert('ERROR. Probeer een andere berekening.'));
   }
 
 
   clear(): any {
-    this.numberTwo = undefined;
-    this.numberOne = undefined;
+    this.numberTwo = '';
+    this.numberOne = '';
     this.method = undefined;
   }
 }
