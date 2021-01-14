@@ -5,3 +5,13 @@
   border-width: thin;
   border-color: black;
 }
+
+.button {
+  width: 40px;
+  height: 40px;
+}
+
+.button__clear{
+  width: 80px;
+  height: 40px;
+}

@@ -68,4 +68,11 @@ describe('CalculatorComponent', () => {
     component.calculate(calculation);
     expect(mockCalculateService.calculate).toHaveBeenCalledWith(calculation);
   });
+
+  it('should throw an error when dividing by zero', () => {
+    mockCalculateService.calculate = jasmine.createSpy().and.throwError('ERROR. Probeer een andere berekening.');
+    const calculation: Calculation = {numberOne: 1, numberTwo: 0, method: 'ADD'};
+
+    expect(() => {component.calculate(calculation); }).toThrow(new Error('ERROR. Probeer een andere berekening.'));
+  });
 });

@@ -3,12 +3,12 @@
   <div>{{numberOne}} {{method}} {{numberTwo}}</div>
 </div>
 <br>
-<button type="button" (click)="numberClicked(number)" *ngFor="let number of numbers">{{number}} </button>
+<button class="button" type="button" (click)="numberClicked(number)" *ngFor="let number of numbers">{{number}} </button>
 <br>
-<button type="button" (click)="methodClicked(method)" *ngFor="let method of methods">{{method}} </button>
+<button class="button" type="button" (click)="methodClicked(method)" *ngFor="let method of methods">{{method}} </button>
 <br>
-<button type="button" (click)="calculate(calculation)">=</button>
-<button type="button" (click)="clear()">CLEAR</button>
+<button class="button" type="button" (click)="calculate(calculation)">=</button>
+<button class="button__clear" type="button" (click)="clear()">CLEAR</button>
 <br>
 <p>History:</p>
 <div *ngFor="let calc of calculations">{{calc.numberOne}} {{calc.method}} {{calc.numberTwo}} = {{calc.result}}</div>
